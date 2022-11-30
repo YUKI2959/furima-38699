@@ -1,17 +1,15 @@
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | UNIQUE      |
-| encrypted_password | string | null: false |
-| last_name          | string | null: false |
-| first_name         | string | null: false |
-| last_name_kana     | string | null: false |
-| first_name_kana    | string | null: false |
-| year               | string | null: false |
-| month              | string | null: false |
-| day                | string | null: false |
+| Column             | Type    | Options                  |
+| ------------------ | ------- | ------------------------ |
+| nickname           | string  | null: false              |
+| email              | string  | null: false,unique: true |
+| encrypted_password | string  | null: false              |
+| last_name          | string  | null: false              |
+| first_name         | string  | null: false              |
+| last_name_kana     | string  | null: false              |
+| first_name_kana    | string  | null: false              |
+| birthday           | date    | null: false              |
 
 
 
@@ -25,51 +23,52 @@
 
 ## items テーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| item_name       | string     | null: false                    |
-| item_text       | text       | null: false                    |
-| item_category   | string     | null: false                    |
-| item_condition  | string     | null: false                    |
-| shipping_charge | string     | null: false                    |
-| shipping_area   | string     | null: false                    |
-| days_to_ship    | string     | null: false                    |
-| item_price      | string     | null: false                    |
-| user            | references | null: false, foreign_key: true |
+| Column            | Type       | Options                        |
+| ----------------- | ---------- | ------------------------------ |
+| item_name         | string     | null: false                    |
+| item_text         | text       | null: false                    |
+| item_category_id  | integer    | null: false                    |
+| item_condition_id | integer    | null: false                    |
+| ship_charge_id    | integer    | null: false                    |
+| ship_area_id      | integer    | null: false                    |
+| ship_day_id       | integer    | null: false                    |
+| item_price        | string     | null: false                    |
+| user              | references | null: false, foreign_key: true |
 
 
 ### Association
 
-- belongs_to :users
-- belongs_to :orders
+- belongs_to :user
+- has_one    :order
 
 
 
-## orders テーブル
+## order テーブル
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
 | user      | references | null: false, foreign_key: true |
-| items     | references | null: false, foreign_key: true |
+| item      | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-- belongs_to :orders_information
+- belongs_to :user
+- belongs_to :item
+- has_one    :orders_informations
 
 
-## orders_information テーブル
+## order_informations テーブル
 
 | Column        | Type       | Options                        |
 | --------------| ---------- | ------------------------------ |
-| buyer         | string     | null: false, foreign_key: true |
-| post_code     | string     | null: false, foreign_key: true |
-| prefecture    | string     | null: false, foreign_key: true |
-| municipality  | string     | null: false, foreign_key: true |
-| address       | string     | null: false, foreign_key: true |
-| building_name | string     | null: false                    |
-| phone_number  | string     | null: false, foreign_key: true |
+| order         | string     | null: false, foreign_key: true |
+| post_code     | string     | null: false,                   |
+| prefecture    | string     | null: false,                   |
+| municipality  | string     | null: false,                   |
+| address       | string     | null: false,                   |
+| building_name | string     |                                |
+| phone_number  | string     | null: false,                   |
+
 
 
 
