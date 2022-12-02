@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   # presence: true 空を許可しない
   validates :birthday, presence: true
+  validates :nickname, presence: true
 
   # presence: true 空を許可しない
   with_options presence: true do
