@@ -19,4 +19,8 @@ class User < ApplicationRecord
     # カタカナのみ許可する
     validates :last_name_kana,:first_name_kana, presence: true,format: {with: /\A[ァ-ヶー]+\z/, message: "is invalid. Input full-width katakana characters."}
   end
+
+  # Association
+  has_many :items
+
 end
