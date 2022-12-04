@@ -16,4 +16,5 @@ class Item < ApplicationRecord
   validates :area_id,           numericality: { other_than: 1, message: "can't be blank"} 
   validates :ship_day_id,       numericality: { other_than: 1, message: "can't be blank"} 
 
+  has_one_attached :image
 end
