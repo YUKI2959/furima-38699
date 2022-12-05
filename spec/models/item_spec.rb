@@ -31,31 +31,31 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Item text can't be blank")
       end
 
-      it "item_category_idが空では登録できない" do
+      it "カテゴリーに「---」が選択されている場合は出品できない" do
         @item.item_category_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Item category can't be blank")
       end
 
-      it "item_condition_idが空では登録できない" do
+      it "商品の状態に「---」が選択されている場合は出品できない" do
         @item.item_condition_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Item condition can't be blank")
       end
 
-      it "ship_charge_idが空では登録できない" do
+      it "配送料の負担に「---」が選択されている場合は出品できない" do
         @item.ship_charge_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Ship charge can't be blank")
       end
 
-      it "area_idが空では登録できない" do
+      it "発送元の地域に「---」が選択されている場合は出品できない" do
         @item.area_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Area can't be blank")
       end
 
-      it "ship_day_idが空では登録できない" do
+      it "発送までの日数に「---」が選択されている場合は出品できない" do
         @item.ship_day_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Ship day can't be blank")
@@ -83,6 +83,12 @@ RSpec.describe Item, type: :model do
         @item.item_price = "１０００"
         @item.valid?
         expect(@item.errors.full_messages).to include( "Item price Price is invalid. Input half-width characters", "Item price Price is out of setting range")
+      end
+
+      it "userが紐付いていなければ出品できない" do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include( "User must exist" )
       end
 
     end
