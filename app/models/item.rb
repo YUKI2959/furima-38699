@@ -8,13 +8,13 @@ class Item < ApplicationRecord
   belongs_to :area
   belongs_to :ship_day
 
-  validates :item_name, :item_text, presence: true
+  validates :item_name, :item_text,:image, presence: true
 
-  validates :item_category_id,  numericality: { other_than: 1, message: "can't be blank"} 
-  validates :item_condition_id, numericality: { other_than: 1, message: "can't be blank"} 
-  validates :ship_charge_id,    numericality: { other_than: 1, message: "can't be blank"} 
-  validates :area_id,           numericality: { other_than: 1, message: "can't be blank"} 
-  validates :ship_day_id,       numericality: { other_than: 1, message: "can't be blank"} 
+  validates :item_category_id,  numericality: { other_than: 1, message: "can't be blank" }
+  validates :item_condition_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :ship_charge_id,    numericality: { other_than: 1, message: "can't be blank" }
+  validates :area_id,           numericality: { other_than: 1, message: "can't be blank" }
+  validates :ship_day_id,       numericality: { other_than: 1, message: "can't be blank" }
 
   has_one_attached :image
 end
