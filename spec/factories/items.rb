@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :item do
     item_name { Faker::Commerce.product_name }
     item_text { Faker::Lorem.sentence }
-    item_category_id { Faker::Number.within(range: 2..10) }
+    item_category_id { Faker::Number.within(range: 2..11) }
     item_condition_id { Faker::Number.within(range: 2..7) }
     ship_charge_id { Faker::Number.within(range: 2..3) }
     area_id { Faker::Number.within(range: 2..48) }
