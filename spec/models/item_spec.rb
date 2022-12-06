@@ -32,31 +32,31 @@ RSpec.describe Item, type: :model do
       end
 
       it 'カテゴリーに「---」が選択されている場合は出品できない' do
-        @item.item_category_id = ''
+        @item.item_category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Item category can't be blank")
       end
 
       it '商品の状態に「---」が選択されている場合は出品できない' do
-        @item.item_condition_id = ''
+        @item.item_condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Item condition can't be blank")
       end
 
       it '配送料の負担に「---」が選択されている場合は出品できない' do
-        @item.ship_charge_id = ''
+        @item.ship_charge_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Ship charge can't be blank")
       end
 
       it '発送元の地域に「---」が選択されている場合は出品できない' do
-        @item.area_id = ''
+        @item.area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Area can't be blank")
       end
 
       it '発送までの日数に「---」が選択されている場合は出品できない' do
-        @item.ship_day_id = ''
+        @item.ship_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Ship day can't be blank")
       end
