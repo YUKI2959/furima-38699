@@ -1,11 +1,11 @@
 class OrderForm
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :post_code, :area_id, :municipality, :address, :building_name, :phone_number
+  attr_accessor :user_id, :item_id, :post_code, :area_id, :municipality, :address, :building_name, :phone_number, :token
   
   with_options presence: true do
     validates :user_id, :item_id, :post_code, :municipality, :address
     validates :area_id, numericality: { other_than: 1, message: "can't be blank" }
-    validates :post_code, presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    # validates :post_code, presence: true, format: {with: /\A\d{10,11}\z/, message: "is invalid. Include hyphen(-)"}
   end
 
   def save
