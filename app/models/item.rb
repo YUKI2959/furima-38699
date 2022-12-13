@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :area
   belongs_to :ship_day
   has_one_attached :image
+  has_one    :order
 
   validates :item_name, :item_text, :image, :item_price, presence: true
 
